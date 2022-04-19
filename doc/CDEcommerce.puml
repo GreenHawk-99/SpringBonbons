@@ -1,0 +1,67 @@
+@startuml
+!theme hacker
+
+class Role {
+-id: long
+-nom: String
+}
+
+class Utilisateur {
+-id: long
+-nom: String
+-prenom: String
+-email: String
+-mdp: String
+}
+
+class Produit {
+-id: long
+-nom: String
+-image: String
+}
+
+class Categorie {
+-id: long
+-nom: String
+}
+
+class Commande {
+-id: long
+-dateCommande: Date
+-status: String
+}
+
+class Inventaire {
+-id: long
+-quantité: int
+-prix: float
+-portion: String
+}
+
+class "Ligne Commande" as LC {
+-quantite: int
+}
+
+class Commentaire {
+-id: long
+-texte: String
+-dateCommentaire: LocaleDateTime
+}
+
+class Note {
+-note: int
+}
+
+Utilisateur "*" -- "1" Role :"\t\t"
+Commentaire "*" - "1" Utilisateur :"\t\t"
+Produit "*" -- "*" Utilisateur :"\t\t"
+(Produit,Utilisateur) . Note
+Produit "1" --- "*" Commentaire :"\t\t"
+Utilisateur "1" - "*" Commande :"\t\t"
+Inventaire "*" -- "*" Commande :"\t\t"
+(Inventaire,Commande) . LC
+Produit "1" - "*" Inventaire :"\t\t"
+Categorie "1" - "*" Produit :"\t\t"
+
+
+@enduml

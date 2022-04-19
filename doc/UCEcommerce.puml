@@ -1,0 +1,33 @@
+@startuml
+!theme hacker
+
+left to right direction
+skinparam actorStyle awesome
+
+actor "Visiteur" as V
+actor "Client" as C
+actor "Admin" as A
+
+
+rectangle "Spring Bonbons" {
+    usecase "Consulter les produits" as CP
+'    usecase "Ajouter un produit à mon panier" as AA
+    usecase AA as "Ajouter un produit à mon panier
+    --
+    Seulement si client"
+
+'    note right of AA: Seulement si client
+    CP <.. AA : extends
+
+    usecase "Gérer son panier" as GP
+    usecase "Gérer"
+
+
+    usecase "Gérer les commandes" as GC
+}
+V --> CP
+
+C --> CP
+C --> GP
+
+@enduml

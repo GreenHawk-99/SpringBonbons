@@ -1,4 +1,4 @@
-package com.example.springbonbons;
+package com.springbonbons;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
